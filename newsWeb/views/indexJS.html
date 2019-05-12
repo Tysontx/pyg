@@ -1,0 +1,13 @@
+<script>
+    window.onload = function(){
+        $(".dels").click(function(){
+            if (!confirm("确定删除？")) {
+                return false
+            }
+        });
+        $("#select").change(function(){
+            // 让 form 发起一个请求
+            $("#form").submit()
+        })
+    }
+</script>
