@@ -309,6 +309,19 @@ func (this *UserController)Logout(){
 
 // 展示用户中心页面
 func (this *UserController)ShowUserCenterInfo(){
+	o := orm.NewOrm()
+	var user models.User
+	// 获取当前用户
+	name := this.GetSession("name")
+	user.Name = name.(string)
+	o.Read(&user, "Name")
+	// 查询当前的默认地址
+	var address models.Address
+	o.QueryTable("Address").Filter("IsDefault", true).One(&address)
+
+	this.Data["address"] = address
+	this.Data["tplName"] = "个人信息"
+	this.Layout = "userLayout.html"
 	this.TplName = "user_center_info.html"
 }
 
@@ -320,8 +333,12 @@ func (this *UserController)ShowSite(){
 	name := this.GetSession("name") // 获取当前用户
 	qs := o.QueryTable("Address").RelatedSel("User").Filter("User__Name", name.(string))
 	qs.Filter("IsDefault", true).One(&address)
-	beego.Info(address)
+	qian := address.Phone[:3]
+	hou := address.Phone[7:]
+	address.Phone = qian + "****" + hou
 	this.Data["address"] = address
+	this.Data["tplName"] = "收货地址"
+	this.Layout = "userLayout.html"
 	this.TplName = "user_center_site.html"
 }
 
