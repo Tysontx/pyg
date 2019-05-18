@@ -30,6 +30,24 @@ func init() {
 	beego.Router("/user/site", &controllers.UserController{}, "get:ShowSite;post:HandleSite")
 	// 生鲜模块
 	beego.Router("/index_sx", &controllers.GoodsController{}, "get:ShowIndexSx")
+	// 商品详情页
+	beego.Router("/goodsDetail", &controllers.GoodsController{}, "get:ShowGoodsDetail")
+	// 商品列表页面
+	beego.Router("/goodsType", &controllers.GoodsController{}, "get:ShowList")
+	// 搜索商品
+	beego.Router("/search", &controllers.GoodsController{},"post:HandleSearch")
+	// 添加购物车
+	beego.Router("/addCart", &controllers.CartController{}, "post:HandleAddCart")
+	// 我的购物车
+	beego.Router("/user/showCart", &controllers.CartController{}, "get:ShowCart")
+	// 更改购物车数量　－－　加一或减一
+	beego.Router("/upOrMinus", &controllers.CartController{}, "post:HandleUpOrMinus")
+	// 购物车删除商品
+	beego.Router("/deleteCart", &controllers.CartController{}, "post:HandleDeleteCart")
+	// 点击“去结算”业务
+	beego.Router("/user/addOrder", &controllers.OrderController{}, "post:ShowOrder")
+	// 提交订单
+	beego.Router("/pushOrder", &controllers.OrderController{}, "post:HandlePushOrder")
 }
 
 func guolvFunc(ctx *context.Context){

@@ -28,7 +28,7 @@ type Message struct {
 }
 
 // 返回 json 格式数据
-func RespFunc(this *UserController, resp map[string]interface{}) {
+func RespFunc(this *beego.Controller, resp map[string]interface{}) {
 	// 把容器传给前端
 	this.Data["json"] = resp
 	// 指定传递方式
@@ -45,7 +45,7 @@ func (this *UserController)HandleSendMsg(){
 	// 获取数据
 	phone := this.GetString("phone")
 	resp := make(map[string]interface{})
-	defer RespFunc(this, resp)
+	defer RespFunc(&this.Controller, resp)
 	// 校验数据
 	if phone == "" {
 		resp["errno"] = 1
