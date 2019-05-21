@@ -178,7 +178,7 @@ func (this *UserController)HandleEmail(){
 	emailReg.From = "28645957@qq.com"
 	emailReg.To = []string{email}
 	userName := this.Ctx.GetCookie("userName")
-	emailReg.HTML = `<a href="http://192.168.181.155:8080/active?userName=`+userName+`"> 点击激活该用户</a>`
+	emailReg.HTML = `<a href="http://192.168.181.156:8080/active?userName=`+userName+`"> 点击激活该用户</a>`
 	//发送
 	beego.Info("发送邮件")
 	err := emailReg.Send()

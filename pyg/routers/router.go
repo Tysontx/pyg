@@ -48,6 +48,12 @@ func init() {
 	beego.Router("/user/addOrder", &controllers.OrderController{}, "post:ShowOrder")
 	// 提交订单
 	beego.Router("/pushOrder", &controllers.OrderController{}, "post:HandlePushOrder")
+	// 展示用户中心订单页
+	beego.Router("/user/userOrder", &controllers.OrderController{}, "get:ShowUserOrder")
+	// 去支付
+	beego.Router("/pay", &controllers.OrderController{},"get:Pay")
+	// 支付成功
+	beego.Router("/payOk", &controllers.OrderController{}, "get:PayOk")
 }
 
 func guolvFunc(ctx *context.Context){

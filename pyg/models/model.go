@@ -117,7 +117,7 @@ type OrderInfo struct {
 	TotalCount   int           `orm:"default(1)"`   //商品数量
 	TotalPrice   int                                //商品总价
 	TransitPrice int                                //运费
-	Orderstatus  int           `orm:"default(1)"`   //订单状态
+	Orderstatus  int           `orm:"default(0)"`   //订单状态
 	TradeNo      string        `orm:"default('')"`  //支付编号
 	Time         time.Time     `orm:"auto_now_add"` //订单时间
 	OrderGoods   []*OrderGoods `orm:"reverse(many)"`

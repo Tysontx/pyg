@@ -45,7 +45,7 @@
         <h3>用户中心</h3>
         <ul>
             <li><a href="/user/userCenterInfo" {{if compare .tplName "个人信息"}}class="active"{{end}}>· 个人信息</a></li>
-            <li><a href="#" {{if compare .tplName "全部订单"}}class="active"{{end}}>· 全部订单</a></li>
+            <li><a href="/user/userOrder" {{if compare .tplName "全部订单"}}class="active"{{end}}>· 全部订单</a></li>
             <li><a href="/user/site" {{if compare .tplName "收货地址"}}class="active"{{end}}>· 收货地址</a></li>
         </ul>
     </div>
